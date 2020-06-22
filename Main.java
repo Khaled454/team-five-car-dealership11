@@ -116,6 +116,20 @@ public class Main {
       for (Cars v : carList) {
         System.out.println("Id: " + v.getId() + " Make: " + v.getMake());
     }
+    
+        public static void searchCarInventory(ArrayList<Inventory> carList, ArrayList<Parts> partList) {
+        Scanner in = new Scanner(System.in);
+        String input = "";
+        for (Inventory c : carList) {  //Search string by vehicleId
+            System.out.println("Enter Make: ");
+            input = in.nextLine();
+            c.getMake();
+
+            if () {
+                System.out.println(c.getColor());
+                break;
+            }
+        }
 
 
     public static SalesLead addSalesLead(ArrayList<SalesLead> leadList) {
