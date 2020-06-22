@@ -60,52 +60,60 @@ public class Main {
         char firstChar = answer.charAt(0);
         return firstChar;
     }
-public Cars addCars (ArrayList<Cars>cList) {
+    
+    //  adding cars to inventory (cList)
+    public Cars addCars (ArrayList<Cars>cList) {
+        
+        Cars newCar = 
+        Scanner scnr = new Scanner(System.in);
+            for(Cars carList : cList) {
+                System.out.println("Please enter the make:");
+                carList.setMake(scnr.nextLine());
+                carList.getMake();
+                System.out.println("Please enter the model:");
+                String model = scnr.nextLine();
+                System.out.println("Please enter the year:");
+                int year = scnr.nextInt();
+                System.out.println("Please enter the color:");
+                String color = scnr.next();
+                System.out.println("Please enter the MPG:");
+                int MPG = scnr.nextInt();
+    
+            }
 
-    Scanner scnr = new Scanner(System.in);
-    System.out.println("Please enter the make:");
-   nextLine());
-    System.out.println("Please enter the model:");
-    String model = scnr.nextLine();
-    System.out.println("Please enter the year:");
-    int year = scnr.nextInt();
-    System.out.println("Please enter the color:");
-    String color = scnr.next();
-    System.out.println("Please enter the MPG:");
-    int MPG = scnr.nextInt();
 }
 
 //Search string by vehicleId
       for (Cars c : cList) {
-        if (car== c.getId()) {
+        if (car== c.getcarID()) {
             System.out.println(c.getColor());
             break;
         }
     }
 
     //Update Search string by vehicleId set Color
-      for (Vehicle v : vehicleList) {
-        if (vehicleId == v.getId()) {
+      for (Cars v : carList) {
+        if (vehicleId == v.getcarID()) {
             v.setColor(Color.Purple);
             break;
         }
     }
 
     //Print all vehicle objects in ArrayList
-      for (Vehicle v : vehicleList) {
+      for (Cars v : carList) {
         System.out.println("Id: " + v.getId() + " Make: " + v.getMake());
     }
 
     //Remove Search string by vehicleId set Color
-      for (Vehicle v : vehicleList) {
-        if (vehicleId == v.getId()) {
+      for (Cars v : carList) {
+        if (carID == v.getcarID()) {
             vehicleList.remove(v);
             break;
         }
     }
 
     //Print all vehicle objects in ArrayList
-      for (Vehicle v : vehicleList) {
+      for (Cars v : carList) {
         System.out.println("Id: " + v.getId() + " Make: " + v.getMake());
     }
 
@@ -141,9 +149,4 @@ public Cars addCars (ArrayList<Cars>cList) {
 
     //public stat Add employees
     //do while to limit access
-
-
-
     //We can add as much of things that we like
-
-}
