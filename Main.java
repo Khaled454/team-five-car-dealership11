@@ -22,28 +22,28 @@ public class Main {
         ArrayList<SalesLead> leadList = new ArrayList<>(); // to add sales leads (non-converted customers)
 
 
+
         // Instantiate objects and add them to the appropriate ArrayList
         Cars car1 = new Cars(1, "Toyota", "Camry", 2007, "Black", 2000000);
         Cars car2 = new Cars(2, "Toyota", "Camry", 2008, "Grey", 3245);
         Cars car3 = new Cars(3, "Toyota", "Camry", 2009, "White", 2333);
-        Cars car4 = new Cars(9, "Toyota", "Tacoma", 2017, "Sand", 15478);
+        Cars car4 = new Cars(4, "Toyota", "Tacoma", 2017, "Sand", 15478);
 
-        Cars car5 = new Cars(4, "Chevrolet", "Cruze", 2011, "Gray", 67000 );
-        Cars car6 = new Cars(4, "Chevrolet", "Cruze", 2012, "Gray", 67000 );
-        Cars car7 = new Cars(4, "Chevrolet", "Cruze", 2013, "Gray", 67000 );
+        Cars car5 = new Cars(5, "Chevrolet", "Cruze", 2011, "Gray", 67000 );
+        Cars car6 = new Cars(6, "Chevrolet", "Cruze", 2012, "Gray", 67000 );
+        Cars car7 = new Cars(7, "Chevrolet", "Cruze", 2013, "Gray", 67000 );
 
         Cars car8 = new Cars(8, "Ford", "F150", 2016,"Black", 20000 );
-        Cars car9 = new Cars(8, "Ford", "F150", 2017,"White", 12057 );
-        Cars car10 = new Cars(8, "Ford", "F150", 2019,"Black", 10239 );
+        Cars car9 = new Cars(9, "Ford", "F150", 2017,"White", 12057 );
+        Cars car10 = new Cars(10, "Ford", "F150", 2019,"Black", 10239 );
 
-        Cars car11 = new Cars(6, "Honda", "Civic", 2008, "Green", 112005 );
-        Cars car12 = new Cars(6, "Honda", "Civic", 2009, "Blue", 104888 );
-        Cars car13 = new Cars(6, "Honda", "Civic", 2014, "Red", 78394 );
-        
-        Cars car14 = new Cars(5, "Kia", "Forte", 2012, "Bronze", 119000 );
-        Cars car15 = new Cars(5, "Kia", "Forte", 2012, "Bronze", 119000 );
-        Cars car16 = new Cars(5, "Kia", "Forte", 2013, "Bronze", 119000 );
-        
+        Cars car11 = new Cars(11, "Honda", "Civic", 2008, "Green", 112005 );
+        Cars car12 = new Cars(12, "Honda", "Civic", 2009, "Blue", 104888 );
+        Cars car13 = new Cars(13, "Honda", "Civic", 2014, "Red", 78394 );
+
+        Cars car14 = new Cars(14, "Kia", "Forte", 2012, "Bronze", 119000 );
+        Cars car15 = new Cars(15, "Kia", "Forte", 2012, "Bronze", 119000 );
+        Cars car16 = new Cars(16, "Kia", "Forte", 2013, "Bronze", 119000 );        
 
         carList.add(car1);
         carList.add(car2);
