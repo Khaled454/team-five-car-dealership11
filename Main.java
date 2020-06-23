@@ -25,15 +25,27 @@ public class Main {
         Cars car2 = new Cars(2, "Toyota", "Camry", 2008, "Grey", 3245);
         Cars car3 = new Cars(3, "Toyota", "Camry", 2009, "White", 2333);
 
-       carList.add(car1);
-       carList.add(car2);
-       carList.add(car3);
+        Cars car4 = new Cars(4, "Chevrolet", "Cruze", 2011, "Gray", 67000 );
+        Cars car5 = new Cars(5, "Kia", "Forte", 2012, "Bronze", 119000 );
+        Cars car6 = new Cars(6, "Honda", "Civic", 2014, "Green", 78394 );
+        Cars car7= new Cars(7, "Dodge", "Charger", 2015, "Orange", 55536 );
+        Cars car8 = new Cars(8, "Ford", "F150", 2016,"White", 20000 );
+        Cars car9 = new Cars(9, "Toyota", "Tacoma", 2017, "Sand", 15478);
 
+        carList.add(car1);
+        carList.add(car2);
+        carList.add(car3);
+        carList.add(car4);
+        carList.add(car5);
+        carList.add(car6);
+        carList.add(car7);
+        carList.add(car8);
+        carList.add(car9);
 
-       Parts part1 = new Parts("Shocks", 123434, "Suspension");
+        Parts part1 = new Parts("Shocks", 123434, "Suspension");
         Parts part2 = new Parts("Brake pad", 56656, "Brakes");
 
-       partList.add(part1);
+        partList.add(part1);
         partList.add(part2);
 
         userAction = getAction(PROMPT_ACTION);
