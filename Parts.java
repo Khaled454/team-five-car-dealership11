@@ -1,6 +1,7 @@
 package edu.psu.abington.ist.ist242;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Parts {
 //Data members
@@ -8,12 +9,21 @@ public class Parts {
     private String partName;
     private int partNumber;//OR ID but in real life it is number
     private String partType;//So like under what category is this part. Example Shocks go under suspension category
+    private double partPrice;
 
 // Constructor methods
     public Parts(String _partName, int _partNumber, String _partType) {
     this.partName=_partName;
     this.partNumber=_partNumber;
     this.partType=_partType;
+    }
+
+    public Parts(String _partType) {
+        this.partType = _partType;
+    }
+
+    public Parts(int _partNumber) {
+        this.partNumber = _partNumber;
     }
 
    // Setters and getters
@@ -37,9 +47,7 @@ public class Parts {
     }
 
 
-
     //Make an arraylist for the parts
-
     public static void listParts(ArrayList<Parts> pList) {
         for (Parts part : pList) {
             System.out.println("Part ID: " + part.getPartName());
@@ -48,4 +56,20 @@ public class Parts {
         }
     }
 
+    //  print parts
+    public static void printParts(ArrayList<Parts> pList) {
+        for (Parts parts : pList) {
+            System.out.printf(parts.getPartName());
+
+        }
+    }
+
+    // remove parts by ID number
+    public static void removeParts(ArrayList<Parts> pList, int _partNumber) {
+        for (Parts parts : pList) {
+            if (parts.getPartNumber() == _partNumber) {
+                pList.remove(parts);
+            }
+        }
+    }
 }
