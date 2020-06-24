@@ -96,8 +96,7 @@ public class Main {
     
     //  adding cars to inventory (cList)
     public Cars addCars (ArrayList<Cars>cList) {
-        
-        Cars newCar = 
+        Cars newCar = new Cars(carCount++);
         Scanner scnr = new Scanner(System.in);
             for(Cars carList : cList) {
                 System.out.println("Please enter the make:");
@@ -111,10 +110,11 @@ public class Main {
                 String color = scnr.next();
                 System.out.println("Please enter the MPG:");
                 int MPG = scnr.nextInt();
-    
-            }
 
-}
+            }
+            
+            return newCar;
+    }
 
 //Search string by vehicleId
       for (Cars c : cList) {
