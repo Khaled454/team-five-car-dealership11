@@ -1,7 +1,9 @@
 package edu.psu.abington.ist.ist242;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 import java.util.Scanner;
+import java.util.Iterator;
 
 public class Main {
 
@@ -15,12 +17,13 @@ public class Main {
         final char EXIT_CODE = 'E';
         final char SEE_CARS = 'C';
         final char SEE_PARTS = 'P';
-        final char ADD_PARTS = '1';
-        final char ADD_VEHICLE = '2';
+        final char ADD_PARTS = 'A';
+        final char ADD_VEHICLE = 'V';
+        final char MANAGE_INV = 'M';
         final char SEARCH = 'S';
         char userAction;
-        final String PROMPT_ACTION = "To see cars inventory type'C', to see parts inventory type'P', to exit type 'e'";
-
+        final String PROMPT_ACTION = "To see cars inventory type'C', to see parts inventory type'P', to search inventory type 'S', to exit type 'e'";
+        Scanner scnr = new Scanner(System.in);
 
         ArrayList<Cars> carList = new ArrayList<>();//To add cars
         ArrayList<Parts> partList = new ArrayList<>();// To add parts
@@ -73,75 +76,87 @@ public class Main {
         partList.add(part1);
         partList.add(part2);
 
-        // prompt user
 
+        // prompt user
         System.out.println ("DEALERSHIP MAIN MENU");
         userAction = getAction(PROMPT_ACTION);
 
-        while (userAction != EXIT_CODE) {
+        do {
+
             switch (userAction) {
                 case SEE_CARS:
-                    Cars.listCars(carList);
+                    Cars.printCarYearMakeModel(carList);
+                    userAction = getAction(PROMPT_ACTION);
                     break;
+
                 case SEE_PARTS:
                     Parts.listParts(partList);
                     break;
+
                 case SEARCH:
                     String inv_type = getType();  // part or vehicle
                     switch (inv_type) {
                         case "car":
-                            System.out.println("Enter Type ('color'/'model'/'maker'/'location'): ");
-                            String searchType = input.nextLine().toLowerCase();
-                            Scanner scnr = new Scanner(System.in);
+                            System.out.println("Enter Type ('color'/'make'): ");
+                            String searchType = scnr.nextLine().toLowerCase();
 
                             switch (searchType) {
                                 case "color":
-
                                     System.out.println("Please enter color: ");
                                     String input_ = scnr.nextLine();
-
                                     Cars.printCarByColor(carList, input_);
 
                                     break;
                                 case "make":
-
                                     System.out.println("Please enter make: ");
-                                    input_ = scnr.nextLine();
+                                    input_ = scnr.next();
+                                    Cars.printCarByMakeModelAndYear(carList, input_);
 
-                                    Cars.printCarByColor(carList, input_);
-
-                                    break;
-                                case "model":
-
-                                    System.out.println("Please enter model: ");
-                                    input_ = scnr.nextLine();
-
-                                    Cars.printCarByModel(carList, input_);
-
-                                    break;
-                                case "VIN":
                                     break;
                             }
-
-                        case ADD_PARTS:
-                            partList.add(Main.addParts());
-
-                            break;
-
-                        case ADD_VEHICLE:
-                            System.out.println("Enter Vehicle Make: ");
-                            inv_type = input.nextLine().toLowerCase();
-
-                            switch (inv_type) {
-                                case "car":
-                                    carList.add(Main.addCar());
-                                    break;
-                            }
-                            break;
                     }
+
+                case MANAGE_INV:
+                    inv_type = getType();
+
+                    switch (inv_type) {// input user action method
+                        case "Car":
+
+                            String manage_what = getManageInventory();
+                            switch(manage_what) {
+
+                                case "Add":
+                                    break;
+
+                                case "Remove":
+                                    break;
+                            }
+                            break;
+                        case "Part":
+                            manage_what = getManageInventory();
+                            switch(manage_what) {
+
+                                case "Add":
+                                    partList.add(Main.addParts());
+                                    break;
+
+                                case "Remove":
+                                    break;
+                            }
+                            break;
                     }
             }
+        } while (userAction != EXIT_CODE);
+    }
+
+    public static void printCarsForWelcomeScreen(ArrayList<Cars> carList) {
+        for(int i = 0; i < carList.size(); i++) {
+            for (Cars printCarInventory : carList) {
+                System.out.println(printCarInventory.getMake());
+            }
         }
+    }
+
 
     public static char getAction(String prompt) {
         Scanner scnr = new Scanner(System.in);
@@ -151,6 +166,24 @@ public class Main {
         char firstChar = answer.charAt(0);
         return firstChar;
     }
+
+
+    public static String getType() {
+        Scanner scnr = new Scanner (System.in);
+        System.out.println ("Enter Search Type ('Car'/'Part'): ");
+        String type = scnr.nextLine ().toLowerCase ();
+        return type;
+    }
+
+
+
+    public static String getManageInventory() {
+        Scanner scnr = new Scanner (System.in);
+        System.out.println ("Enter 'Add' or 'Remove': ");
+        String manageWhat = scnr.nextLine ().toLowerCase ();
+        return manageWhat;
+    }
+
 
     //  adding cars to inventory (cList)
     public Cars addCars (ArrayList<Cars>cList) {
@@ -206,13 +239,6 @@ public class Main {
             }
         }
     }*/
-
-    public static String getType() {
-        Scanner scnr = new Scanner (System.in);
-        System.out.println ("Enter Search Type ('car'/'parts'): ");
-        String type = scnr.nextLine ().toLowerCase ();
-        return type;
-    }
 
 
     //  add cars to inventory (by manager)
