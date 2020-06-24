@@ -1,5 +1,7 @@
 package edu.psu.abington.ist.ist242;
 
+import java.util.ArrayList;
+
 public class Person {
 
     String firstName;
@@ -89,5 +91,16 @@ public class Person {
 
     public void setStatus(boolean status) {
         this.status = status;
+    }
+
+    // print person
+    public static void printPerson(ArrayList<Person> peopleList) {
+        for(Person addPersonTo : peopleList) {
+            System.out.println("Role: " + addPersonTo.getRole() + " (" + addPersonTo.isStatus() + ")");
+            System.out.println("Name: " + addPersonTo.getFirstName() + " " + addPersonTo.getLastName());
+            System.out.println("Phone Number: " + addPersonTo.getPhoneNumber());
+            System.out.println("Email: " + addPersonTo.getEmailAddress());
+            System.out.println("Address: " + addPersonTo.getAddress());
+        }
     }
 }
