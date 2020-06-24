@@ -1,12 +1,23 @@
 package edu.psu.abington.ist.ist242;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class SalesAdvisor extends Employee{
+
+    private int advisorId;
 
     public SalesAdvisor(Manager.department dept, int salary, LocalDate hireDate, int employeeID, String firstName, String lastName, String emailAddress, String phoneNumber, String address, boolean status, role role) {
         super(salary, hireDate, employeeID, firstName, lastName, emailAddress, phoneNumber, address, status, role);
         setRole(role.SALESMAN);
+    }
+
+    public int getAdvisorId() {
+        return advisorId;
+    }
+
+    public void setAdvisorId(int _advisorId) {
+        this.advisorId = _advisorId;
     }
 
     @Override
@@ -99,7 +110,8 @@ public class SalesAdvisor extends Employee{
         this.role = role;
     }
 
-    //  print contact info for sales advisor
-
-    //  add/remove sales leads by ID number
+    // TO-DO:
+        //  print contact info for sales advisor
+        //  class methods
+        //  add/remove sales leads by ID number
 }
