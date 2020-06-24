@@ -1,10 +1,10 @@
-package cardealership;
+package edu.psu.abington.ist.ist242;
 
 import java.time.LocalDate;
 
 public class SalesAdvisor extends Employee{
-    
-    public SalesAdvisor(Manager.department dept, int salary, LocalDate hireDate, int employeeID, String firstName, String lastName, String emailAddress, String phoneNumber, Address address, boolean status, role role) {
+
+    public SalesAdvisor(Manager.department dept, int salary, LocalDate hireDate, int employeeID, String firstName, String lastName, String emailAddress, String phoneNumber, String address, boolean status, role role) {
         super(salary, hireDate, employeeID, firstName, lastName, emailAddress, phoneNumber, address, status, role);
         setRole(role.SALESMAN);
     }
@@ -43,7 +43,7 @@ public class SalesAdvisor extends Employee{
     public String getLastName() {
         return lastName;
     }
-    
+
     @Override
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -70,12 +70,12 @@ public class SalesAdvisor extends Employee{
     }
 
     @Override
-    public Address getAddress() {
+    public String getAddress() {
         return address;
     }
 
     @Override
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
@@ -97,5 +97,9 @@ public class SalesAdvisor extends Employee{
     @Override
     public void setRole(role role) {
         this.role = role;
-    }   
+    }
+
+    //  print contact info for sales advisor
+
+    //  add/remove sales leads by ID number
 }
