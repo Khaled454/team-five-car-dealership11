@@ -1,16 +1,17 @@
-package cardealership;
+package edu.psu.abington.ist.ist242;
 
 import java.time.LocalDate;
+import java.util.Scanner;
 
 public class Manager extends Employee{
 
     department dept;
-    
+
     public enum department {
         SALES, INVENTORY, GENERAL, ACCOUNTING
     }
-    
-    public Manager(department dept, int salary, LocalDate hireDate, int employeeID, String firstName, String lastName, String emailAddress, String phoneNumber, Address address, boolean status, role role) {
+
+    public Manager(department dept, int salary, LocalDate hireDate, int employeeID, String firstName, String lastName, String emailAddress, String phoneNumber, String address, boolean status, role role) {
         super(salary, hireDate, employeeID, firstName, lastName, emailAddress, phoneNumber, address, status, role);
         this.dept = dept;
         setRole(role.MANAGER);
@@ -85,12 +86,12 @@ public class Manager extends Employee{
     }
 
     @Override
-    public Address getAddress() {
+    public String getAddress() {
         return address;
     }
 
     @Override
-    public void setAddress(Address address) {
+    public void setAddress(String address) {
         this.address = address;
     }
 
@@ -113,5 +114,22 @@ public class Manager extends Employee{
     public void setRole(role role) {
         this.role = role;
     }
-    
+
+
+    // add/remove inventory
+    // add/remove
+
+   /* public Parts removeParts(add part arrayList) {
+
+        Parts parts = new Parts(partsCount++);
+        Scanner in = new Scanner(System.in);
+        System.out.println("Please enter part name: ");
+        String partName = in.nextLine();
+        parts.removePartName(partName);
+        //parts.setPartType();
+        parts.setPartNumber(partsCount);
+
+        return parts;
+    }*/
+
 }
