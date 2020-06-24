@@ -1,32 +1,122 @@
 package edu.psu.abington.ist.ist242;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class SalesLead {
+public class SalesLead extends Person {
 
     //  for sales leads, we should only need basic information about the non-converted customer
-    private int leadId;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String phone;
 
-    //Constructor
-    public SalesLead(int _leadId) {
-        this.leadId = _leadId;
+    private int leadId;
+    SalesLead.department dept;
+
+    public enum department {
+        SALES, GENERAL
     }
+
+    public SalesLead(SalesLead.department dept, int salary, LocalDate hireDate, int employeeID, String firstName, String lastName, String emailAddress, String phoneNumber, String address, boolean status, role role) {
+        super(firstName, lastName, emailAddress, phoneNumber, address, status, role);
+        this.dept = dept;
+        setRole(role.SALESMAN);
+    }
+    //Constructor
 
     // setters/getters
-    public int getleadId() {
+
+    public int getLeadId() {
         return leadId;
     }
-    public void setleadId(int _leadId) {
+    public void setLeadId(int _leadId) {
         this.leadId = _leadId;
     }
 
+    @Override
     public String getFirstName() {
+        return firstName;
+    }
+
+    @Override
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    @Override
+    public String getLastName() {
         return lastName;
+    }
+
+    @Override
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    @Override
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    @Override
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    @Override
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    @Override
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    @Override
+    public String getAddress() {
+        return address;
+    }
+
+    @Override
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    @Override
+    public boolean isStatus() {
+        return status;
+    }
+
+    @Override
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    @Override
+    public role getRole() {
+        return role;
+    }
+
+    @Override
+    public void setRole(role role) {
+        this.role = role;
+    }
+
+
+    //  class methods
+    public static void listSalesLeads(ArrayList<SalesLead> leadList) {
+        for (SalesLead leads : leadList) {
+            System.out.println("Lead ID: " + leads.getLeadId());
+            System.out.println("First Name: " + leads.getFirstName());
+            System.out.println("Last Name: " + leads.getLastName());
+            System.out.println("Email: " + leads.getEmailAddress());
+            System.out.println("Phone: " + leads.getPhoneNumber());
+        }
+    }
+}
+
+/*
+
+    public String getFirstName() {
+        return firstName;
     }
     public void setFirstName(String _lastName) {
         this.lastName = _lastName;
@@ -39,55 +129,17 @@ public class SalesLead {
         this.lastName = _lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getEmailAddress() {
+        return emailAddress;
     }
-    public void setEmail(String _email) {
-        this.email = _email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-    public void setPhone(String _phone) {
-        this.phone = _phone;
+    public void setEmailAddress(String _email) {
+        this.emailAddress = _email;
     }
 
-
-    //  class methods
-    public static void listSalesLeads(ArrayList<SalesLead> leadList) {
-        for (SalesLead leads : leadList) {
-            System.out.println("Lead ID: " + leads.getleadId());
-            System.out.println("First Name: " + leads.getFirstName());
-            System.out.println("Last Name: " + leads.getLastName());
-            System.out.println("Last Name: " + leads.getEmail());
-            System.out.println("Last Name: " + leads.getPhone());
-        }
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
-
-
-    // this is to be added to the main() method in class Main
-    public static SalesLead addSalesLead(ArrayList<SalesLead> leadList) {
-        SalesLead lead = new SalesLead(leadIdCount++);  // --> please add private static int leadIdCount = 0; in Main Class, before main() method
-        Scanner in = new Scanner(System.in);
-        for (SalesLead s : leadList) {
-            System.out.println("Lead First Name: " + s.getFirstName());
-            s.setFirstName(in.nextLine());
-            System.out.println("Lead Last Name: " + s.getLastName());
-            s.setLastName(in.nextLine());
-            System.out.println("Lead Email: " + s.getEmail());
-            s.setEmail(in.nextLine());
-            System.out.println("Lead Phone: " + s.getPhone());
-            s.setPhone(in.nextLine());
-            System.out.println("Lead ID: " + s.getleadId());
-        }
-        return lead;
+    public void setPhone(String _phoneNumber) {
+        this.phoneNumber = _phoneNumber;
     }
-
-    /* QUESTIONS:
-    1. Can we add option to login and/or add sales lead (then 'logging in' with the employee's ID?
-        1a. We would add it to this line in main() of class Main: final String PROMPT_ACTION = "To see cars inventory type'C', to see parts inventory type'P', to exit type 'e'";
-        1b. Only Sales Advisors and Employees should have access to add new leads (NOT customers)
-
-     */
-}
+ */
