@@ -6,6 +6,8 @@ import java.util.Scanner;
 public class Main {
 
     private static int leadIdCount = 0;
+    private static int partsCount = 0;
+    private static int carCount = 0;
 
     public static void main(String[] args) {
 
@@ -13,6 +15,9 @@ public class Main {
         final char EXIT_CODE = 'E';
         final char SEE_CARS = 'C';
         final char SEE_PARTS = 'P';
+        final char ADD_PARTS = '1';
+        final char ADD_VEHICLE = '2';
+        final char SEARCH = 'S';
         char userAction;
         final String PROMPT_ACTION = "To see cars inventory type'C', to see parts inventory type'P', to exit type 'e'";
 
@@ -20,8 +25,6 @@ public class Main {
         ArrayList<Cars> carList = new ArrayList<>();//To add cars
         ArrayList<Parts> partList = new ArrayList<>();// To add parts
         ArrayList<SalesLead> leadList = new ArrayList<>(); // to add sales leads (non-converted customers)
-
-
 
         // Instantiate objects and add them to the appropriate ArrayList
         Cars car1 = new Cars(1, "Toyota", "Camry", 2007, "Black", 2000000);
@@ -43,7 +46,12 @@ public class Main {
 
         Cars car14 = new Cars(14, "Kia", "Forte", 2012, "Bronze", 119000 );
         Cars car15 = new Cars(15, "Kia", "Forte", 2012, "Bronze", 119000 );
-        Cars car16 = new Cars(16, "Kia", "Forte", 2013, "Bronze", 119000 );        
+        Cars car16 = new Cars(16, "Kia", "Forte", 2013, "Bronze", 119000 );
+
+
+        Parts part1 = new Parts("Shocks", 123434, "Suspension");
+        Parts part2 = new Parts("Brake pad", 56656, "Brakes");
+
 
         carList.add(car1);
         carList.add(car2);
@@ -62,13 +70,12 @@ public class Main {
         carList.add(car15);
         carList.add(car16);
 
-
-        Parts part1 = new Parts("Shocks", 123434, "Suspension");
-        Parts part2 = new Parts("Brake pad", 56656, "Brakes");
-
         partList.add(part1);
         partList.add(part2);
 
+        // prompt user
+
+        System.out.println ("DEALERSHIP MAIN MENU");
         userAction = getAction(PROMPT_ACTION);
 
         while (userAction != EXIT_CODE) {
@@ -78,12 +85,63 @@ public class Main {
                     break;
                 case SEE_PARTS:
                     Parts.listParts(partList);
+                    break;
+                case SEARCH:
+                    String inv_type = getType();  // part or vehicle
+                    switch (inv_type) {
+                        case "car":
+                            System.out.println("Enter Type ('color'/'model'/'maker'/'location'): ");
+                            String searchType = input.nextLine().toLowerCase();
+                            Scanner scnr = new Scanner(System.in);
 
-    }
+                            switch (searchType) {
+                                case "color":
 
-            userAction = getAction(PROMPT_ACTION);
+                                    System.out.println("Please enter color: ");
+                                    String input_ = scnr.nextLine();
+
+                                    Cars.printCarByColor(carList, input_);
+
+                                    break;
+                                case "make":
+
+                                    System.out.println("Please enter make: ");
+                                    input_ = scnr.nextLine();
+
+                                    Cars.printCarByColor(carList, input_);
+
+                                    break;
+                                case "model":
+
+                                    System.out.println("Please enter model: ");
+                                    input_ = scnr.nextLine();
+
+                                    Cars.printCarByModel(carList, input_);
+
+                                    break;
+                                case "VIN":
+                                    break;
+                            }
+
+                        case ADD_PARTS:
+                            partList.add(Main.addParts());
+
+                            break;
+
+                        case ADD_VEHICLE:
+                            System.out.println("Enter Vehicle Make: ");
+                            inv_type = input.nextLine().toLowerCase();
+
+                            switch (inv_type) {
+                                case "car":
+                                    carList.add(Main.addCar());
+                                    break;
+                            }
+                            break;
+                    }
+                    }
+            }
         }
-    }
 
     public static char getAction(String prompt) {
         Scanner scnr = new Scanner(System.in);
@@ -93,7 +151,7 @@ public class Main {
         char firstChar = answer.charAt(0);
         return firstChar;
     }
-    
+
     //  adding cars to inventory (cList)
     public Cars addCars (ArrayList<Cars>cList) {
         Cars newCar = new Cars(carCount++);
@@ -112,58 +170,9 @@ public class Main {
                 int MPG = scnr.nextInt();
 
             }
-            
+
             return newCar;
     }
-
-//Search string by vehicleId
-      for (Cars c : cList) {
-        if (car== c.getcarID()) {
-            System.out.println(c.getColor());
-            break;
-        }
-    }
-
-    //Update Search string by vehicleId set Color
-      for (Cars v : carList) {
-        if (vehicleId == v.getcarID()) {
-            v.setColor(Color.Purple);
-            break;
-        }
-    }
-
-    //Print all vehicle objects in ArrayList
-      for (Cars v : carList) {
-        System.out.println("Id: " + v.getId() + " Make: " + v.getMake());
-    }
-
-    //Remove Search string by vehicleId set Color
-      for (Cars v : carList) {
-        if (carID == v.getcarID()) {
-            vehicleList.remove(v);
-            break;
-        }
-    }
-
-    //Print all vehicle objects in ArrayList
-      for (Cars v : carList) {
-        System.out.println("Id: " + v.getId() + " Make: " + v.getMake());
-    }
-    
-        public static void searchCarInventory(ArrayList<Inventory> carList, ArrayList<Parts> partList) {
-        Scanner in = new Scanner(System.in);
-        String input = "";
-        for (Inventory c : carList) {  //Search string by vehicleId
-            System.out.println("Enter Make: ");
-            input = in.nextLine();
-            c.getMake();
-
-            if () {
-                System.out.println(c.getColor());
-                break;
-            }
-        }
-
 
     public static SalesLead addSalesLead(ArrayList<SalesLead> leadList) {
         SalesLead lead = new SalesLead(leadIdCount++);
@@ -182,18 +191,69 @@ public class Main {
         }
         return lead;
     }
-}
-    //public stat add cars just like add orders
-    //Do while to limit access to this action
-    //public stat add parts
-    //Do while to limit access to this action
+
+ /*   public static void searchCarInventory(ArrayList<Inventory> carList, ArrayList<Parts> partList) {
+        Scanner in = new Scanner(System.in);
+        String input = "";
+        for (Inventory c : carList) {  //Search string by vehicleId
+            System.out.println("Enter Make: ");
+            input = in.nextLine();
+            c.getMake();
+
+            if () {
+                System.out.println(c.getColor());
+                break;
+            }
+        }
+    }*/
+
+    public static String getType() {
+        Scanner scnr = new Scanner (System.in);
+        System.out.println ("Enter Search Type ('car'/'parts'): ");
+        String type = scnr.nextLine ().toLowerCase ();
+        return type;
+    }
+
+
+    //  add cars to inventory (by manager)
+    public static Cars addCar(ArrayList<Cars> carList) {
+
+        Cars addCarToArray = new Cars(carCount++);
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter part name: ");
+        String input = in.nextLine();
+        addCarToArray.setMake(input);
+        addCarToArray.setID(carCount);
+
+        return addCarToArray;
+    }
+
+    //  add parts to inventory (only manager)
+    public static Parts addParts() {
+
+        Parts parts = new Parts(partsCount++);
+        Scanner in = new Scanner(System.in);
+        System.out.println("Please enter part name: ");
+        String partName = in.nextLine();
+        parts.setPartName(partName);
+        //parts.setPartType();
+        parts.setPartNumber(partsCount);
+
+        return parts;
+    }
+
+    //  prompt user for part type
+    public Parts setPartType() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter Parts Type ('motor', 'interior', 'exterior'): ");
+        Parts partType = new Parts(in.nextLine());
+
+        return partType;
+    }
+
+    // check ID number for sales advisor and manager
     //public stat remove cars
-    //Do while to limit access to this action
     //public stat remove parts
-    //Do while to limit access
-
     //public stat add customer just like pizza customer
-
     //public stat Add employees
-    //do while to limit access
-    //We can add as much of things that we like
+}
